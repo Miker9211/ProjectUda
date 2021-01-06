@@ -41,6 +41,11 @@ vector<vector<State>> ReadBoardFile(string path) {
   return board;
 }
 
+int heuristic(int x1, int x2, int y2, int y1)
+{
+  return abs(x2 - x1) + abs(y2 - y1);
+
+}
 vector<vector<State>> Search(vector<vector<State>> grid, int init[2], int goal[2])
 {
     cout << "No Path Found" << "\n";
@@ -54,22 +59,24 @@ string CellString(State cell) {
   }
 }
 
-void PrintBoard(const vector<vector<State>> board) {
-  for (int i = 0; i < board.size(); i++) {
-    for (int j = 0; j < board[i].size(); j++) {
-      cout << CellString(board[i][j]);
+void PrintBoard (const vector<vector<State>> board)
+{
+    for (int i = 0; i < board.size(); i++){
+      for (int j = 0; j < board[i].size(); j++){
+        cout << CellString(board[i][j]);
+      }
+      cout << "\n";
     }
-    cout << "\n";
-  }
 }
+
 vector<vector<int>> board {{0,1,0,0,0,0},
-{0,1,0,0,0,0},
+{0,1,0,0,0,0},                  
 {0,1,0,0,0,0},
 {0,1,0,0,0,0},
 {0,0,0,0,1,0},};
 
-
 int main() {
+    
     int init[2]{0,0};
     int goal[2]{4,5};
   auto board = ReadBoardFile("1.board");

@@ -8,8 +8,8 @@ void PrintBoard (const vector<vector<int>> board)
     for (auto v : board){
         for (int i : v)
         cout << i << " ";
+        cout << "\n";
     }
-    cout << "\n";
 }
 
 
