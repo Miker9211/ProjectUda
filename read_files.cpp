@@ -9,7 +9,7 @@ using std::istringstream;
 using std::string;
 using std::vector;
 
-enum class State {kEmpty, kObstacle};
+enum class State {kEmpty, kObstacle, kClose};
 
 vector<State> ParseLine(string line) {
     istringstream sline(line);
@@ -46,8 +46,24 @@ int heuristic(int x1, int x2, int y2, int y1)
   return abs(x2 - x1) + abs(y2 - y1);
 
 }
+
+void AddToOpen(int x, int y, int g, int h, vector<vector<int>> &nodes, vector<vector<State>> &grid)
+{
+    
+    nodes.push_back(vector<int>{x, y, g, h});
+    grid[x][y] = State::kClose;
+}
+
 vector<vector<State>> Search(vector<vector<State>> grid, int init[2], int goal[2])
 {
+    vector<vector<int>> open {};
+
+    int x = 0;
+    int y = 1;
+    int g = 0;
+    int h = heuristic(x, y, init[0], goal[1]);
+    AddToOpen(x, y, g, h, open, grid);
+
     cout << "No Path Found" << "\n";
     return vector<vector<State>> {};
 }
