@@ -69,12 +69,6 @@ void PrintBoard (const vector<vector<State>> board)
     }
 }
 
-vector<vector<int>> board {{0,1,0,0,0,0},
-{0,1,0,0,0,0},                  
-{0,1,0,0,0,0},
-{0,1,0,0,0,0},
-{0,0,0,0,1,0},};
-
 int main() {
     
     int init[2]{0,0};
