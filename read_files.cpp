@@ -41,6 +41,13 @@ vector<vector<State>> ReadBoardFile(string path) {
   return board;
 }
 
+bool Compare(const vector<int> a, vector<int> b)
+{
+  int f1 = a[2] + a[3]; //f1 = g1 + h1
+  int f2 = b[2] + b[3]; // f2 = g2 + h2
+  return f1 > f2; 
+}
+
 int heuristic(int x1, int x2, int y2, int y1)
 {
   return abs(x2 - x1) + abs(y2 - y1);
